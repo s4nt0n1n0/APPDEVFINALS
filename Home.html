@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augorio Miguel - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="theme-toggle" id="themeToggle">🌙</button></li>
+            <li><a href="#contact" class="hire-btn">Hire Me</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <section class="hero section" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Hello, I'm</h2>
+                <h1>Augorio Miguel</h1>
+                <h3 class="typing-text">IT Student and Developer</h3>
+                <p>Passionate about technology and innovation. Currently pursuing my degree in Information Technology while building projects and expanding my skill set.</p>
+                
+                <a href="resume.pdf" class="download-btn" id="downloadCV" download>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                    </svg>
+                    Download CV
+                </a>
+            </div>
+
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="" alt="Augorio Miguel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-wrapper">
+                <div class="about-text-box">
+                    <p class="about-intro">I'm an Information Technology student passionate about building scalable web applications and solving complex problems through code. With a strong foundation in full-stack development, I enjoy collaborating with teams and continuously learning new technologies.</p>
+                    <p class="about-desc">When I'm not coding, I'm exploring new frameworks, contributing to open-source projects, or experimenting with emerging technologies to stay ahead in this ever-evolving field.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Years in IT</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills section" id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category skill-card">
+                    <h3>Frontend</h3>
+                    <div class="skill-tags"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span></div>
+                </div>
+                <div class="skill-category skill-card">
+                    <h3>Backend</h3>
+                    <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">Node.js</span><span class="skill-tag">MySQL</span></div>
+                </div>
+                <div class="skill-category skill-card">
+                    <h3>Tools</h3>
+                    <div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">VS Code</span><span class="skill-tag">Figma</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience section" id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><h3>Junior Developer</h3><p class="timeline-date">2024 - Present</p><p>Building web applications.</p></div></div>
+                <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-content"><h3>IT Intern</h3><p class="timeline-date">2023 - 2024</p><p>Assisted with system maintenance and small projects.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">💼</div>
+                    <h3>Portfolio Website</h3>
+                    <p>A modern, responsive portfolio built with HTML, CSS, and JavaScript featuring dark mode, smooth animations, and a clean design.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications section" id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">📜</div>
+                    <h3>JavaScript Mastery</h3>
+                    <p class="cert-issuer">Advanced JavaScript Fundamentals</p>
+                    <p class="cert-desc">Comprehensive course covering ES6+, async programming, and modern JavaScript practices.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <h3>Web Development</h3>
+                    <p class="cert-issuer">Full Stack Web Development</p>
+                    <p class="cert-desc">Complete web development course including HTML, CSS, JavaScript, and backend technologies.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">☁️</div>
+                    <h3>Cloud Computing</h3>
+                    <p class="cert-issuer">AWS Cloud Essentials</p>
+                    <p class="cert-desc">Introduction to cloud computing concepts, AWS services, and cloud infrastructure management.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🔐</div>
+                    <h3>Cybersecurity</h3>
+                    <p class="cert-issuer">Security Fundamentals</p>
+                    <p class="cert-desc">Core cybersecurity principles, network security, and protection against common threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="contact-intro">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item"><span class="contact-icon">📧</span><div><h3>Email</h3><a href="mailto:augoriomiguel@email.com">augoriomiguel@email.com</a></div></div>
+                    <div class="contact-item"><span class="contact-icon">📱</span><div><h3>Phone</h3><p>+1 (XXX) XXX-XXXX</p></div></div>
+                    <div class="contact-item"><span class="contact-icon">📍</span><div><h3>Location</h3><p>Your City, Your Country</p></div></div>
+                </div>
+
+                <form class="contact-form" aria-label="Contact form">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="message" rows="6" placeholder="Your message" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <button id="helpButton" class="help-button" title="Help">?</button>
+
+    <script src="style.js"></script>
+</body>
+</html>
