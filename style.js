@@ -29,6 +29,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Anti-gravity background initializer (floating decorative blobs)
+  function initAntiGravity(opts = {}) {
+    const { count = 7, minSize = 80, maxSize = 260 } = opts;
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.innerWidth < 680) return; // skip on small screens
+      const container = document.querySelector('.anti-gravity');
+      if (!container) return;
+      // clear any existing
+      container.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        const size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize;
+        b.style.width = size + 'px';
+        b.style.height = size + 'px';
+        // random position - allow some overflow for nicer effect
+        b.style.left = (Math.random() * 110 - 5) + '%';
+        b.style.top = (Math.random() * 110 - 5) + '%';
+        // assign size class for subtle color variance
+        if (size < (minSize + maxSize) / 3) b.classList.add('small');
+        else if (size < (minSize + maxSize) * 0.66) b.classList.add('medium');
+        else b.classList.add('large');
+        const dur = (Math.random() * 18) + 22; // 22s - 40s
+        const delay = (Math.random() * -dur).toFixed(2);
+        b.style.animation = `antiFloat ${dur}s ease-in-out ${delay}s infinite`;
+        b.style.opacity = (0.45 + Math.random() * 0.5).toFixed(2);
+        container.appendChild(b);
+      }
+    } catch (e) { console.warn('Anti-gravity init failed', e) }
+  }
+
+  // initialize anti-gravity after everything else
+  try { initAntiGravity({count:7}); } catch(e) {}
+
   // Update active nav link based on scroll position
   const updateActiveNav = () => {
     const sections = document.querySelectorAll('.section');
