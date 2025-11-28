@@ -60,27 +60,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.querySelector('.nav-links');
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    const setHamburgerState = (open) => {
+      navLinks.classList.toggle('active', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
       const spans = hamburger.querySelectorAll('span');
-      const active = navLinks.classList.contains('active');
       if (spans.length >= 3) {
-        spans[0].style.transform = active ? 'rotate(45deg) translate(5px, 5px)' : 'none';
-        spans[1].style.opacity = active ? '0' : '1';
-        spans[2].style.transform = active ? 'rotate(-45deg) translate(7px, -6px)' : 'none';
+        spans[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+        spans[1].style.opacity = open ? '0' : '1';
+        spans[2].style.transform = open ? 'rotate(-45deg) translate(7px, -6px)' : 'none';
       }
+    };
+
+    hamburger.addEventListener('click', () => setHamburgerState(!navLinks.classList.contains('active')));
+    // keyboard support
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setHamburgerState(!navLinks.classList.contains('active'));
+      }
+      if (e.key === 'Escape') setHamburgerState(false);
     });
 
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        const spans = hamburger.querySelectorAll('span');
-        if (spans.length >= 3) {
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
-        }
-      });
+      link.addEventListener('click', () => setHamburgerState(false));
     });
   }
 
@@ -92,9 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // use nav height offset so fixed nav doesn't cover content
+        const navEl = document.querySelector('nav');
+        const navH = navEl ? navEl.offsetHeight : 72;
+        const targetY = window.pageYOffset + target.getBoundingClientRect().top - navH - 12;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
         // Update active nav link after smooth scroll
-        setTimeout(updateActiveNav, 200);
+        setTimeout(updateActiveNav, 400);
       }
     });
   });
@@ -102,12 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Download CV
   const download = document.getElementById('downloadCV');
   if (download) {
-    download.addEventListener('click', (e) => {
+    download.addEventListener('click', async (e) => {
       const href = download.getAttribute('href');
       if (!href) return;
-      fetch(href, { method: 'HEAD' }).catch(() => {
-        console.warn('resume.pdf not found or request blocked (preview).');
-      });
+      e.preventDefault();
+      try {
+        const res = await fetch(href, { method: 'HEAD' });
+        if (res.ok) {
+          // file exists — follow link
+          window.location.href = href;
+        } else {
+          // show modal fallback
+          showModal('Resume not found', 'It looks like the resume file is missing. Please contact me via email.');
+        }
+      } catch (err) {
+        showModal('Resume unavailable', 'Could not reach the resume file — try again later or contact me.');
+      }
     });
   }
 
@@ -124,6 +140,25 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(success);
       contactForm.reset();
       setTimeout(() => success.remove(), 3500);
+    });
+  }
+
+  // Copy email to clipboard
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  const contactEmail = document.getElementById('contactEmail');
+  if (copyEmailBtn && contactEmail) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = contactEmail.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(email);
+        const tip = document.createElement('div');
+        tip.textContent = 'Email copied to clipboard';
+        tip.style.cssText = 'position:fixed;left:50%;top:20%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:.6rem 1rem;border-radius:8px;z-index:10001;box-shadow:0 8px 30px rgba(2,6,23,0.2);';
+        document.body.appendChild(tip);
+        setTimeout(() => tip.remove(), 1800);
+      } catch (e) {
+        console.warn('Clipboard write failed', e);
+      }
     });
   }
 
@@ -155,6 +190,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
+          // If this section contains education cards, reveal them with a stagger
+          try {
+            const eduCards = entry.target.querySelectorAll('.edu-card');
+            if (eduCards && eduCards.length) {
+              eduCards.forEach((card, idx) => {
+                card.style.transition = 'opacity .55s ease, transform .55s ease';
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                }, idx * 120);
+              });
+            }
+          } catch (e) {}
         }
       });
     }, observerOptions);
@@ -177,7 +225,55 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         nav.style.boxShadow = '';
       }
+      // back-to-top visibility and progress
+      const back = document.getElementById('backToTop');
+      if (back) {
+        const show = current > 300;
+        back.classList.toggle('show', show);
+        try {
+          const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) - window.innerHeight;
+          const pct = docH > 0 ? Math.min(100, Math.round((current / docH) * 100)) : 0;
+          const progressEl = back.querySelector('.bt-progress');
+          if (progressEl) progressEl.style.width = pct + '%';
+        } catch (e) {}
+      }
     });
+    // Keep nav visible on scroll: make it fixed and add body padding equal to nav height
+    try {
+      nav.style.position = 'fixed';
+      nav.style.top = '0';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.zIndex = '10000';
+      const setBodyPadding = () => {
+        const h = nav.offsetHeight || 72;
+        document.body.style.paddingTop = h + 'px';
+      };
+      // initial
+      setBodyPadding();
+      // update on resize to account for responsive nav height
+      window.addEventListener('resize', setBodyPadding);
+    } catch (e) {
+      // ignore if not allowed
+    }
+  }
+
+  // Back to top click
+  const backBtn = document.getElementById('backToTop');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // small reusable modal
+  function showModal(title, message) {
+    const modal = document.createElement('div');
+    modal.style.cssText = 'position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--card-light);color:inherit;padding:1rem 1.25rem;border-radius:10px;z-index:10002;box-shadow:0 20px 60px rgba(2,6,23,0.25);max-width:420px;';
+    modal.innerHTML = `<h3 style="margin:0 0 .5rem;">${title}</h3><p style="margin:0 0 .75rem;color:var(--muted);">${message}</p><div style="text-align:right"><button id=modalClose style=\"padding:.5rem .75rem;border-radius:8px;border:0;background:var(--primary);color:#fff;cursor:pointer\">Close</button></div>`;
+    document.body.appendChild(modal);
+    document.getElementById('modalClose').addEventListener('click', () => modal.remove());
+    setTimeout(() => { try { modal.remove(); } catch(e){} }, 7000);
   }
 
 });
