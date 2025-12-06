@@ -239,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(modal);
     document.getElementById('modalClose').addEventListener('click', () => modal.remove());
     setTimeout(() => { try { modal.remove(); } catch(e){} }, 7000);
+
+    
   }
 });
 
