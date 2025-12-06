@@ -3,6 +3,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
 
+  // ============================================
+  // THEME MANAGEMENT
+  // ============================================
+
   // Restore saved theme preference
   try {
     const saved = localStorage.getItem('theme');
@@ -30,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggle.textContent = isDark ? '☀️' : '🌙';
     });
   }
+
+  // ============================================
+  // ANTI-GRAVITY BACKGROUND
+  // ============================================
 
   // Anti-gravity background initializer (floating decorative blobs)
   function initAntiGravity(opts = {}) {
@@ -70,6 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // initialize anti-gravity after everything else
   try { initAntiGravity({count:7}); } catch(e) {}
+
+  // ============================================
+  // NAVIGATION
+  // ============================================
 
   // Update active nav link based on scroll position
   const updateActiveNav = () => {
@@ -153,12 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Download CV
+  // ============================================
+  // HOME PAGE - Download CV
+  // ============================================
+
   const download = document.getElementById('downloadCV');
   if (download) {
     download.addEventListener('click', async (e) => {
       const href = download.getAttribute('href');
-      if (!href) return;
+      if (!href || href === '#') {
+        e.preventDefault();
+        showModal('Resume not available', 'The resume file is currently unavailable. Please contact me via email.');
+        return;
+      }
 
       e.preventDefault();
       try {
@@ -176,7 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Navbar shadow on scroll
+  // ============================================
+  // NAVBAR & SCROLL EFFECTS
+  // ============================================
+
   const nav = document.querySelector('nav');
   if (nav) {
     window.addEventListener('scroll', () => {
@@ -231,16 +253,226 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // small reusable modal
+  // ============================================
+  // ABOUT PAGE - Certification Counter
+  // ============================================
+
+  const certCount = document.getElementById('certCount');
+  if (certCount) {
+    const targetCount = 5; // Change this to your actual number
+    let currentCount = 0;
+    const duration = 2000;
+    const increment = targetCount / (duration / 16);
+
+    const animateCounter = () => {
+      currentCount += increment;
+      if (currentCount < targetCount) {
+        certCount.textContent = Math.floor(currentCount);
+        requestAnimationFrame(animateCounter);
+      } else {
+        certCount.textContent = targetCount;
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter();
+          observer.disconnect();
+        }
+      });
+    });
+
+    observer.observe(certCount);
+  }
+
+  // ============================================
+  // ABOUT PAGE - Current Time Display
+  // ============================================
+
+  const currentTime = document.getElementById('currentTime');
+  if (currentTime) {
+    const updateTime = () => {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Manila',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+      currentTime.textContent = now.toLocaleTimeString('en-US', options);
+    };
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  }
+
+  // ============================================
+  // ABOUT/CONTACT - Copy Email Button
+  // ============================================
+
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  const contactEmail = document.getElementById('contactEmail');
+
+  if (copyEmailBtn && contactEmail) {
+    copyEmailBtn.addEventListener('click', async () => {
+      const email = contactEmail.textContent || contactEmail.href.replace('mailto:', '');
+      
+      try {
+        await navigator.clipboard.writeText(email);
+        const originalText = copyEmailBtn.textContent;
+        copyEmailBtn.textContent = '✓ Copied!';
+        copyEmailBtn.style.background = '#10b981';
+        
+        setTimeout(() => {
+          copyEmailBtn.textContent = originalText;
+          copyEmailBtn.style.background = '';
+        }, 2000);
+      } catch (err) {
+        showModal('Copy Failed', 'Could not copy email. Please select and copy manually.');
+      }
+    });
+  }
+
+  // ============================================
+  // CONTACT PAGE - DateTime Display
+  // ============================================
+
+  const currentDateTime = document.getElementById('currentDateTime');
+  if (currentDateTime) {
+    const updateDateTime = () => {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Manila',
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      };
+      currentDateTime.textContent = now.toLocaleString('en-US', options);
+    };
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  }
+
+  // ============================================
+  // CONTACT PAGE - Form Validation
+  // ============================================
+
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const successMessage = document.getElementById('successMessage');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const validateField = (input, validator) => {
+      const formGroup = input.closest('.form-group');
+      const isValid = validator(input.value.trim());
+
+      if (isValid) {
+        formGroup.classList.remove('error');
+      } else {
+        formGroup.classList.add('error');
+      }
+
+      return isValid;
+    };
+
+    // Real-time validation
+    if (nameInput) {
+      nameInput.addEventListener('blur', () => {
+        validateField(nameInput, val => val.length > 0);
+      });
+    }
+
+    if (emailInput) {
+      emailInput.addEventListener('blur', () => {
+        validateField(emailInput, val => emailRegex.test(val));
+      });
+    }
+
+    if (subjectInput) {
+      subjectInput.addEventListener('blur', () => {
+        validateField(subjectInput, val => val.length > 0);
+      });
+    }
+
+    if (messageInput) {
+      messageInput.addEventListener('blur', () => {
+        validateField(messageInput, val => val.length > 10);
+      });
+    }
+
+    // Form submission
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const isNameValid = validateField(nameInput, val => val.length > 0);
+      const isEmailValid = validateField(emailInput, val => emailRegex.test(val));
+      const isSubjectValid = validateField(subjectInput, val => val.length > 0);
+      const isMessageValid = validateField(messageInput, val => val.length > 10);
+
+      if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid) {
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        // Simulate API delay (replace with actual form submission)
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        successMessage.classList.add('show');
+        successMessage.style.display = 'block';
+        contactForm.reset();
+
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+          successMessage.style.display = 'none';
+        }, 5000);
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+
+      } catch (error) {
+        showModal('Error', 'There was an error sending your message. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  }
+
+  // ============================================
+  // FOOTER - Update Year
+  // ============================================
+
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // ============================================
+  // UTILITY - Modal
+  // ============================================
+
   function showModal(title, message) {
     const modal = document.createElement('div');
-    modal.style.cssText = 'position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--card-light);color:inherit;padding:1rem 1.25rem;border-radius:10px;z-index:10002;box-shadow:0 20px 60px rgba(2,6,23,0.25);max-width:420px;';
-    modal.innerHTML = `<h3 style="margin:0 0 .5rem;">${title}</h3><p style="margin:0 0 .75rem;color:var(--muted);">${message}</p><div style="text-align:right"><button id=modalClose style=\"padding:.5rem .75rem;border-radius:8px;border:0;background:var(--primary);color:#fff;cursor:pointer\">Close</button></div>`;
+    modal.style.cssText = 'position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--card-light, #f8fafc);color:inherit;padding:1rem 1.25rem;border-radius:10px;z-index:10002;box-shadow:0 20px 60px rgba(2,6,23,0.25);max-width:420px;border:1px solid var(--border-light, #e2e8f0);';
+    modal.innerHTML = `<h3 style="margin:0 0 .5rem;color:var(--primary, #2563eb);">${title}</h3><p style="margin:0 0 .75rem;color:var(--muted, #64748b);">${message}</p><div style="text-align:right"><button id="modalClose" style="padding:.5rem .75rem;border-radius:8px;border:0;background:var(--primary, #2563eb);color:#fff;cursor:pointer;font-weight:600;">Close</button></div>`;
     document.body.appendChild(modal);
     document.getElementById('modalClose').addEventListener('click', () => modal.remove());
     setTimeout(() => { try { modal.remove(); } catch(e){} }, 7000);
-
-    
   }
 });
-
