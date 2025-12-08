@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Augorio Miguel</title>
+    <meta name="description" content="Explore the projects and work of Augorio Miguel">
+    <link rel="stylesheet" href="Projects.css">
+</head>
+<body>
+<nav>
+    <div class="logo">Portfolio</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Projects.html" class="active">Projects</a></li>
+        <li><a href="Skills.html">Skills</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><button class="theme-toggle" id="themeToggle">🌙</button></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+<section class="projects section" id="projects">
+    <div class="container">
+        <h2>My Projects</h2>
+        <p class="section-intro">A collection of projects I've built to solve real-world problems and explore new technologies.</p>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <article class="project-card" data-category="web fullstack">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Task Management System">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-project="1">View Details</button>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Task Management System</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <p class="project-desc">A comprehensive web application for managing tasks, projects, and team collaboration with real-time updates.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.18 9.09 7.59 10.56.56.1.76-.24.76-.54 0-.27-.01-1-.02-1.97-3.09.67-3.75-1.49-3.75-1.49-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.67 2.54 1.19 3.16.91.1-.71.38-1.19.69-1.46-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.43-2.22 1.13-3.01-.11-.28-.49-1.42.11-2.96 0 0 .92-.29 3.02 1.15a10.5 10.5 0 0 1 2.75-.37c.93 0 1.87.13 2.75.37 2.09-1.44 3.01-1.15 3.01-1.15.6 1.54.22 2.68.11 2.96.7.79 1.13 1.79 1.13 3.01 0 4.29-2.61 5.23-5.09 5.51.39.33.74.98.74 1.98 0 1.43-.01 2.58-.01 2.93 0 .3.2.65.77.54 4.41-1.47 7.58-5.64 7.58-10.56C23.25 5.48 18.27.5 12 .5z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                            </svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card" data-category="mobile">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Mobile Expense Tracker">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-project="2">View Details</button>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Mobile Expense Tracker</h3>
+                        <div class="project-status ongoing">In Progress</div>
+                    </div>
+                    <p class="project-desc">An Android application to track daily expenses, set budgets, and visualize spending patterns with charts.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android Studio</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.18 9.09 7.59 10.56.56.1.76-.24.76-.54 0-.27-.01-1-.02-1.97-3.09.67-3.75-1.49-3.75-1.49-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.67 2.54 1.19 3.16.91.1-.71.38-1.19.69-1.46-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.43-2.22 1.13-3.01-.11-.28-.49-1.42.11-2.96 0 0 .92-.29 3.02 1.15a10.5 10.5 0 0 1 2.75-.37c.93 0 1.87.13 2.75.37 2.09-1.44 3.01-1.15 3.01-1.15.6 1.54.22 2.68.11 2.96.7.79 1.13 1.79 1.13 3.01 0 4.29-2.61 5.23-5.09 5.51.39.33.74.98.74 1.98 0 1.43-.01 2.58-.01 2.93 0 .3.2.65.77.54 4.41-1.47 7.58-5.64 7.58-10.56C23.25 5.48 18.27.5 12 .5z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card" data-category="web">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Portfolio Website">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-project="3">View Details</button>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Personal Portfolio</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <p class="project-desc">A responsive portfolio website showcasing my projects, skills, and experience with modern web design principles.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.18 9.09 7.59 10.56.56.1.76-.24.76-.54 0-.27-.01-1-.02-1.97-3.09.67-3.75-1.49-3.75-1.49-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.67 2.54 1.19 3.16.91.1-.71.38-1.19.69-1.46-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.43-2.22 1.13-3.01-.11-.28-.49-1.42.11-2.96 0 0 .92-.29 3.02 1.15a10.5 10.5 0 0 1 2.75-.37c.93 0 1.87.13 2.75.37 2.09-1.44 3.01-1.15 3.01-1.15.6 1.54.22 2.68.11 2.96.7.79 1.13 1.79 1.13 3.01 0 4.29-2.61 5.23-5.09 5.51.39.33.74.98.74 1.98 0 1.43-.01 2.58-.01 2.93 0 .3.2.65.77.54 4.41-1.47 7.58-5.64 7.58-10.56C23.25 5.48 18.27.5 12 .5z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                            </svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="project-card" data-category="fullstack">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="School Management System">
+                    <div class="project-overlay">
+                        <button class="preview-btn" data-project="4">View Details</button>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>School Management System</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <p class="project-desc">A full-stack system for managing student records, attendance, grades, and school administration tasks.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JavaFX</span>
+                        <span class="tech-tag">JDBC</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.18 9.09 7.59 10.56.56.1.76-.24.76-.54 0-.27-.01-1-.02-1.97-3.09.67-3.75-1.49-3.75-1.49-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.67 2.54 1.19 3.16.91.1-.71.38-1.19.69-1.46-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.43-2.22 1.13-3.01-.11-.28-.49-1.42.11-2.96 0 0 .92-.29 3.02 1.15a10.5 10.5 0 0 1 2.75-.37c.93 0 1.87.13 2.75.37 2.09-1.44 3.01-1.15 3.01-1.15.6 1.54.22 2.68.11 2.96.7.79 1.13 1.79 1.13 3.01 0 4.29-2.61 5.23-5.09 5.51.39.33.74.98.74 1.98 0 1.43-.01 2.58-.01 2.93 0 .3.2.65.77.54 4.41-1.47 7.58-5.64 7.58-10.56C23.25 5.48 18.27.5 12 .5z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Project Modal -->
+<div class="project-modal" id="projectModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+        <div class="modal-body">
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="Project preview">
+            </div>
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <div class="modal-status" id="modalStatus"></div>
+                <p id="modalDescription"></p>
+                <div class="modal-tech" id="modalTech"></div>
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul id="modalFeatures"></ul>
+                </div>
+                <div class="modal-links" id="modalLinks"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 15l7-7 7 7"></path>
+    </svg>
+</button>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-left">
+            <p>&copy; <span id="year">2025</span> Augorio Miguel</p>
+        </div>
+        <div class="footer-right">
+            <div class="social-links">
+                <a class="social-link" href="https://github.com/s4nt0n1n0" target="_blank" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.18 9.09 7.59 10.56.56.1.76-.24.76-.54 0-.27-.01-1-.02-1.97-3.09.67-3.75-1.49-3.75-1.49-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.67.08-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.67 2.54 1.19 3.16.91.1-.71.38-1.19.69-1.46-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.43-2.22 1.13-3.01-.11-.28-.49-1.42.11-2.96 0 0 .92-.29 3.02 1.15a10.5 10.5 0 0 1 2.75-.37c.93 0 1.87.13 2.75.37 2.09-1.44 3.01-1.15 3.01-1.15.6 1.54.22 2.68.11 2.96.7.79 1.13 1.79 1.13 3.01 0 4.29-2.61 5.23-5.09 5.51.39.33.74.98.74 1.98 0 1.43-.01 2.58-.01 2.93 0 .3.2.65.77.54 4.41-1.47 7.58-5.64 7.58-10.56C23.25 5.48 18.27.5 12 .5z"/>
+                    </svg>
+                </a>
+                <a class="social-link" href="https://www.facebook.com/augorio.miguel" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.95 0 1.9.17 1.9.17v2.1h-1.07c-1.06 0-1.39.66-1.39 1.34V12h2.37l-.38 2.9h-2v7A10 10 0 0 0 22 12"/>
+                    </svg>
+                </a>
+                <a class="social-link" href="https://www.instagram.com/_awgoriyo" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5a4.5 4.5 0 1 0 .001 9.001A4.5 4.5 0 0 0 12 7.5zm0 7.4a2.9 2.9 0 1 1 .001-5.801A2.9 2.9 0 0 1 12 14.9zM18.5 6.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/>
+                    </svg>
+                </a>
+                <a class="social-link" href="https://www.linkedin.com/in/augorio-abarca-453474268/" target="_blank" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2.1-2.2 4.3-2.2 4.6 0 5.4 3 5.4 6.9V24H17V16.2c0-1.9 0-4.4-2.7-4.4-2.7 0-3.1 2.1-3.1 4.3V24H7.5V8z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="Projects.js"></script>
+<script src="style.js"></script>
+</body>
+</html>
