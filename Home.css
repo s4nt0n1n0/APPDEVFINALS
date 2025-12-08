@@ -50,33 +50,19 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem var(--gutter);
-    position: fixed;
+    padding: 1rem 5%;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10000;
-    background: var(--bg-light);
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-light);
-    box-shadow: 0 2px 8px rgba(15,23,42,0.04);
-    transition: box-shadow 0.3s ease, background 0.3s ease;
-}
-
-body.dark-mode nav {
-    background: var(--bg-dark);
-    border-bottom-color: var(--border-dark);
-}
-
-nav.scrolled {
-    box-shadow: 0 12px 30px rgba(2,6,23,0.12);
 }
 
 .logo {
     font-size: 1.25rem;
     font-weight: 800;
     color: var(--primary);
-    letter-spacing: -0.5px;
     text-transform: uppercase;
 }
 
@@ -88,43 +74,32 @@ nav.scrolled {
 }
 
 .nav-links a {
-    color: inherit;
+    color: var(--text);
     text-decoration: none;
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.18s;
-}
-
-.nav-links a:hover {
-    background: rgba(37, 99, 235, 0.08);
-    color: var(--primary);
-}
-
-.nav-links a.active {
-    background: rgba(37, 99, 235, 0.15);
-    color: var(--primary);
-    font-weight: 700;
-}
-
-.theme-toggle {
-    background: var(--card-light);
-    border: 1px solid var(--border-light);
-    padding: 0.45rem 0.7rem;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1.2rem;
     transition: all 0.2s;
 }
 
-body.dark-mode .theme-toggle {
-    background: var(--card-dark);
-    border-color: var(--border-dark);
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+}
+
+.theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
 }
 
 .theme-toggle:hover {
     transform: translateY(-2px);
-    border-color: var(--primary);
 }
 
 .hamburger {
@@ -134,7 +109,6 @@ body.dark-mode .theme-toggle {
     cursor: pointer;
     background: transparent;
     border: none;
-    padding: 0.4rem;
 }
 
 .hamburger span {
@@ -142,7 +116,6 @@ body.dark-mode .theme-toggle {
     height: 2px;
     background: var(--primary);
     border-radius: 2px;
-    transition: all 0.3s;
 }
 
 /* Hero Section */

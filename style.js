@@ -30,14 +30,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // NAVIGATION - Update active link based on scroll (only for anchor links)
+  // NAVIGATION - Set active link based on current page
   // ============================================
-  const updateActiveNav = () => {
-    // Only update anchor links (#skills, #projects), not page links
+  const setActiveNavLink = () => {
+    const currentPage = window.location.pathname.split('/').pop() || 'Home.html';
+    const navLinks = document.querySelectorAll('.nav-links a:not(.theme-toggle)');
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const linkHref = link.getAttribute('href');
+      
+      // Check if this link matches the current page
+      if (linkHref && (linkHref === currentPage || linkHref.split('/').pop() === currentPage)) {
+        link.classList.add('active');
+      }
+    });
+  };
+
+  // Set active nav on page load
+  setActiveNavLink();
+
+  // For pages with anchor sections (like SkillsProjects.html), update on scroll
+  const updateActiveSection = () => {
     const sections = document.querySelectorAll('.section[id]');
     const anchorLinks = document.querySelectorAll('.nav-links a[href^="#"]:not([href="#"])');
     
-    if (anchorLinks.length === 0) return; // No anchor links on this page
+    if (anchorLinks.length === 0 || sections.length === 0) return;
     
     let current = '';
 
@@ -48,19 +66,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Only update anchor links, don't touch page navigation links
+    // Only update anchor links on the same page
     anchorLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
-        link.classList.add('active');
+      const href = link.getAttribute('href');
+      if (href.startsWith('#')) {
+        link.classList.remove('active');
+        if (href === '#' + current) {
+          link.classList.add('active');
+        }
       }
     });
   };
 
-  // Call on scroll and on load
-  window.addEventListener('scroll', updateActiveNav);
-  updateActiveNav();
-
+  // Only run section-based active state on pages with sections
+  if (document.querySelectorAll('.section[id]').length > 0) {
+    window.addEventListener('scroll', updateActiveSection);
+    updateActiveSection();
+  }
   // ============================================
   // HAMBURGER MENU
   // ============================================
