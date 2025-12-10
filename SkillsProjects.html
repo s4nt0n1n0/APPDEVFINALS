@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <script>
+    <script>
     (function() {
       try {
         if (localStorage.getItem('theme') === 'dark') {
@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav>
-    <div class="logo"></div>
+    <div class="logo">AM</div>
     <ul class="nav-links" id="navLinks">
         <li><a href="Home.html">Home</a></li>
         <li><a href="About.html">About me</a></li>
@@ -75,46 +75,29 @@
         <h2>My Projects</h2>
         <p class="section-intro">A collection of projects I've built</p>
 
+        <!-- Project Filters -->
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="individual">Individual</button>
+            <button class="filter-btn" data-filter="group">Group</button>
+        </div>
+
         <div class="projects-grid">
-            <!-- Project 1 - Tabeya Website -->
-            <article class="project-card">
+            <!-- Project 1 - SSS Simulator -->
+            <article class="project-card" data-category="individual">
                 <div class="project-image">
-                    <img src="" alt="Tabeya Website">
+                    <img src="" alt="SSS Simulator">
                 </div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Tabeya Website</h3>
+                        <h3>SSS Simulator</h3>
                         <div class="project-status">Completed</div>
                     </div>
-                    <p class="project-desc">A modern and responsive website for Tabeya, featuring an elegant design and user-friendly interface for showcasing services and information.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Responsive</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com" target="_blank" class="project-link">
-                            GitHub
-                        </a>
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project 2 - Tabeya Restaurant Management System -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="" alt="Tabeya Restaurant Management System">
-                </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3>Tabeya Restaurant Management System</h3>
-                        <div class="project-status ongoing">In Progress</div>
-                    </div>
-                    <p class="project-desc">A comprehensive restaurant management system for Tabeya, handling orders, inventory, staff management, and customer data efficiently.</p>
+                    <div class="project-category-badge individual">Individual Project</div>
+                    <p class="project-desc">A comprehensive Social Security System simulator that calculates contributions, benefits, and retirement projections for Filipino workers.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Swing</span>
                         <span class="tech-tag">MySQL</span>
                     </div>
                     <div class="project-links">
@@ -125,8 +108,33 @@
                 </div>
             </article>
 
-            <!-- Project 3 - School Lost Item App -->
-            <article class="project-card">
+            <!-- Project 2 - File Manager -->
+            <article class="project-card" data-category="individual">
+                <div class="project-image">
+                    <img src="" alt="File Manager">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>File Manager</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-category-badge individual">Individual Project</div>
+                    <p class="project-desc">A full-featured file management application with intuitive UI for organizing, searching, and managing files and directories efficiently.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">JavaFX</span>
+                        <span class="tech-tag">File I/O</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 - Lost and Found Item -->
+            <article class="project-card" data-category="individual">
                 <div class="project-image">
                     <img src="" alt="School Lost Item App">
                 </div>
@@ -135,6 +143,7 @@
                         <h3>Lost and Found Item</h3>
                         <div class="project-status">Completed</div>
                     </div>
+                    <div class="project-category-badge individual">Individual Project</div>
                     <p class="project-desc">A mobile application designed to help students and staff report and track lost items within the school campus, making recovery easier and faster.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
@@ -149,8 +158,8 @@
                 </div>
             </article>
 
-            <!-- Project 4 - Portfolio Website -->
-            <article class="project-card">
+            <!-- Project 4 - Personal Portfolio -->
+            <article class="project-card" data-category="individual">
                 <div class="project-image">
                     <img src="" alt="Portfolio Website">
                 </div>
@@ -159,6 +168,7 @@
                         <h3>Personal Portfolio</h3>
                         <div class="project-status ongoing">In Progress</div>
                     </div>
+                    <div class="project-category-badge individual">Individual Project</div>
                     <p class="project-desc">A responsive portfolio website showcasing my projects, skills, and experience with modern web design principles and clean aesthetics.</p>
                     <div class="project-tech">
                         <span class="tech-tag">HTML</span>
@@ -170,6 +180,80 @@
                         <a href="https://github.com" target="_blank" class="project-link">
                             GitHub
                         </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 5 - Tabeya Website -->
+            <article class="project-card" data-category="group">
+                <div class="project-image">
+                    <img src="" alt="Tabeya Website">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Tabeya Website</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-category-badge">Group Project</div>
+                    <p class="project-desc">A modern and responsive website for Tabeya, featuring an elegant design and user-friendly interface for showcasing services and information.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 6 - Tabeya Restaurant Management System -->
+            <article class="project-card" data-category="group">
+                <div class="project-image">
+                    <img src="" alt="Tabeya Restaurant Management System">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Tabeya Restaurant Management System</h3>
+                        <div class="project-status ongoing">In Progress</div>
+                    </div>
+                    <div class="project-category-badge">Group Project</div>
+                    <p class="project-desc">A comprehensive restaurant management system for Tabeya, handling orders, inventory, staff management, and customer data efficiently.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 7 - Budget Manager -->
+            <article class="project-card" data-category="group">
+                <div class="project-image">
+                    <img src="" alt="Budget Manager">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Budget Manager</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-category-badge">Group Project</div>
+                    <p class="project-desc">A collaborative personal finance application for tracking expenses, setting budgets, and generating financial reports with data visualization.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Charts</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            GitHub
                         </a>
                     </div>
                 </div>
