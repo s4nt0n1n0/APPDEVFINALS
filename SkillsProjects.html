@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+     <script>
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch(e) {}
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills & Projects - Augorio Miguel</title>
     <meta name="description" content="Technical skills and projects of Augorio Miguel">
@@ -9,10 +18,10 @@
 </head>
 <body>
 <nav>
-    <div class="logo">Portfolio</div>
+    <div class="logo"></div>
     <ul class="nav-links" id="navLinks">
         <li><a href="Home.html">Home</a></li>
-        <li><a href="About.html">About</a></li>
+        <li><a href="About.html">About me</a></li>
         <li><a href="SkillsProjects.html" class="active">Skills & Projects</a></li>
         <li><a href="Contact.html">Contact</a></li>
         <li><button class="theme-toggle" id="themeToggle">🌙</button></li>
@@ -32,8 +41,8 @@
             <div class="skill-category skill-card">
                 <h3>Frontend Development</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">Responsive Design</span>
                 </div>
@@ -67,73 +76,20 @@
         <p class="section-intro">A collection of projects I've built</p>
 
         <div class="projects-grid">
-            <!-- Project 1 -->
+            <!-- Project 1 - Tabeya Website -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Task Management System">
+                    <img src="" alt="Tabeya Website">
                 </div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>Task Management System</h3>
+                        <h3>Tabeya Website</h3>
                         <div class="project-status">Completed</div>
                     </div>
-                    <p class="project-desc">A comprehensive web application for managing tasks, projects, and team collaboration with real-time updates.</p>
+                    <p class="project-desc">A modern and responsive website for Tabeya, featuring an elegant design and user-friendly interface for showcasing services and information.</p>
                     <div class="project-tech">
                         <span class="tech-tag">HTML</span>
                         <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Firebase</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com" target="_blank" class="project-link">
-                            GitHub
-                        </a>
-                        <a href="#" class="project-link">
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Mobile Expense Tracker">
-                </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3>Mobile Expense Tracker</h3>
-                        <div class="project-status ongoing">In Progress</div>
-                    </div>
-                    <p class="project-desc">An Android application to track daily expenses, set budgets, and visualize spending patterns with charts.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Android Studio</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">Firebase</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com" target="_blank" class="project-link">
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Portfolio Website">
-                </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3>Personal Portfolio</h3>
-                        <div class="project-status">Completed</div>
-                    </div>
-                    <p class="project-desc">A responsive portfolio website showcasing my projects, skills, and experience with modern web design principles.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript</span>
                         <span class="tech-tag">Responsive</span>
                     </div>
@@ -141,33 +97,79 @@
                         <a href="https://github.com" target="_blank" class="project-link">
                             GitHub
                         </a>
-                        <a href="#" class="project-link">
-                            Live Demo
                         </a>
                     </div>
                 </div>
             </article>
 
-            <!-- Project 4 -->
+            <!-- Project 2 - Tabeya Restaurant Management System -->
             <article class="project-card">
                 <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="School Management System">
+                    <img src="" alt="Tabeya Restaurant Management System">
                 </div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3>School Management System</h3>
-                        <div class="project-status">Completed</div>
+                        <h3>Tabeya Restaurant Management System</h3>
+                        <div class="project-status ongoing">In Progress</div>
                     </div>
-                    <p class="project-desc">A full-stack system for managing student records, attendance, grades, and school administration tasks.</p>
+                    <p class="project-desc">A comprehensive restaurant management system for Tabeya, handling orders, inventory, staff management, and customer data efficiently.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">JavaFX</span>
-                        <span class="tech-tag">JDBC</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com" target="_blank" class="project-link">
                             GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 - School Lost Item App -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="" alt="School Lost Item App">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Lost and Found Item</h3>
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <p class="project-desc">A mobile application designed to help students and staff report and track lost items within the school campus, making recovery easier and faster.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android Studio</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 4 - Portfolio Website -->
+            <article class="project-card">
+                <div class="project-image">
+                    <img src="" alt="Portfolio Website">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3>Personal Portfolio</h3>
+                        <div class="project-status ongoing">In Progress</div>
+                    </div>
+                    <p class="project-desc">A responsive portfolio website showcasing my projects, skills, and experience with modern web design principles and clean aesthetics.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com" target="_blank" class="project-link">
+                            GitHub
+                        </a>
                         </a>
                     </div>
                 </div>

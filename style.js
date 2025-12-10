@@ -1,30 +1,42 @@
-// Unified JavaScript for all portfolio pages
+// CRITICAL: This script MUST be inlined in <head> before any CSS loads
+// Add this as <script> in <head> of ALL your HTML files:
+/*
+<script>
+(function() {
+  try {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+    }
+  } catch(e) {}
+})();
+</script>
+*/
+
+// Main JavaScript - keep in external file
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
 
   // ============================================
-  // THEME MANAGEMENT
+  // THEME MANAGEMENT - Enhanced for smooth transitions
   // ============================================
-  try {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      body.classList.add('dark-mode');
-    }
-  } catch (e) {}
+  
+  // Sync with preloaded dark mode from head script
+  if (document.documentElement.classList.contains('dark-mode')) {
+    body.classList.add('dark-mode');
+  }
 
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
-    if (body.classList.contains('dark-mode')) {
-      themeToggle.textContent = '☀️';
-    } else {
-      themeToggle.textContent = '🌙';
-    }
+    themeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
 
     themeToggle.addEventListener('click', () => {
       const isDark = body.classList.toggle('dark-mode');
+      document.documentElement.classList.toggle('dark-mode', isDark);
+      
       try {
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       } catch (e) {}
+      
       themeToggle.textContent = isDark ? '☀️' : '🌙';
     });
   }
@@ -40,17 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.remove('active');
       const linkHref = link.getAttribute('href');
       
-      // Check if this link matches the current page
       if (linkHref && (linkHref === currentPage || linkHref.split('/').pop() === currentPage)) {
         link.classList.add('active');
       }
     });
   };
 
-  // Set active nav on page load
   setActiveNavLink();
 
-  // For pages with anchor sections (like SkillsProjects.html), update on scroll
   const updateActiveSection = () => {
     const sections = document.querySelectorAll('.section[id]');
     const anchorLinks = document.querySelectorAll('.nav-links a[href^="#"]:not([href="#"])');
@@ -66,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Only update anchor links on the same page
     anchorLinks.forEach(link => {
       const href = link.getAttribute('href');
       if (href.startsWith('#')) {
@@ -78,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // Only run section-based active state on pages with sections
   if (document.querySelectorAll('.section[id]').length > 0) {
     window.addEventListener('scroll', updateActiveSection);
     updateActiveSection();
   }
+
   // ============================================
   // HAMBURGER MENU
   // ============================================
@@ -116,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Smooth scrolling for internal anchors only
+  // Smooth scrolling for internal anchors
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -130,10 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetY = window.pageYOffset + target.getBoundingClientRect().top - navH - 12;
         window.scrollTo({ top: targetY, behavior: 'smooth' });
         
-        // Update active nav link after smooth scroll
-        setTimeout(updateActiveNav, 400);
+        setTimeout(updateActiveSection, 400);
       }
-      // If target doesn't exist, let the browser handle it (for cross-page links)
     });
   });
 
@@ -203,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   const certCount = document.getElementById('certCount');
   if (certCount) {
-    const targetCount = 5; // Change this to your actual number
+    const targetCount = 5;
     let currentCount = 0;
     const duration = 2000;
     const increment = targetCount / (duration / 16);
@@ -231,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // ABOUT/CONTACT PAGE - Current Time Display
+  // TIME DISPLAYS
   // ============================================
   const currentTime = document.getElementById('currentTime');
   if (currentTime) {
@@ -250,9 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTime, 1000);
   }
 
-  // ============================================
-  // CONTACT PAGE - DateTime Display
-  // ============================================
   const currentDateTime = document.getElementById('currentDateTime');
   if (currentDateTime) {
     const updateDateTime = () => {
@@ -273,18 +276,4 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDateTime();
     setInterval(updateDateTime, 1000);
   }
-
-  // ============================================
-  // HOME PAGE - Download CV
-  // ============================================
-  const downloadCV = document.getElementById('downloadCV');
-  if (downloadCV) {
-    downloadCV.addEventListener('click', async (e) => {
-      const href = downloadCV.getAttribute('href');
-      if (!href || href === '#') {
-        e.preventDefault();
-        alert('Resume not available. Please contact me via email.');
-      }
-    });
-  }
-});
+})

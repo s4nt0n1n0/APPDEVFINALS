@@ -5,7 +5,7 @@
 }
 
 :root {
-    --primary: #2563eb;
+    --primary: #4023cd;
     --secondary: #1e293b;
     --muted: #64748b;
     --bg: #ffffff;
@@ -32,7 +32,6 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -75,7 +74,6 @@ nav {
     padding: 0.5rem 0.75rem;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.2s;
 }
 
 .nav-links a:hover,
@@ -91,11 +89,6 @@ nav {
     border-radius: 12px;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: transform 0.2s;
-}
-
-.theme-toggle:hover {
-    transform: translateY(-2px);
 }
 
 .hamburger {
@@ -165,7 +158,7 @@ nav {
 
 .contact-info {
     display: grid;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .contact-item {
@@ -177,18 +170,31 @@ nav {
 .contact-icon {
     font-size: 1.5rem;
     flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 10px;
+}
+
+.contact-item > div {
+    flex: 1;
 }
 
 .contact-item h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--primary);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 
 .contact-item p,
 .contact-item a {
     color: var(--muted);
     text-decoration: none;
+    font-size: 1rem;
 }
 
 .contact-item a:hover {
@@ -199,16 +205,15 @@ nav {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 0.25rem 0.75rem;
+    padding: 0.4rem 1rem;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: transform 0.2s;
     font-weight: 600;
 }
 
 .copy-email:hover {
-    transform: translateY(-2px);
+    background: #1d4ed8;
 }
 
 .copy-email:active {
@@ -262,7 +267,6 @@ nav {
     font-size: 1rem;
     background: var(--bg);
     color: var(--text);
-    transition: border-color 0.2s;
 }
 
 .form-group input:focus,
@@ -301,12 +305,11 @@ nav {
     font-weight: 700;
     cursor: pointer;
     font-size: 1rem;
-    transition: all 0.2s;
     width: 100%;
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
+    background: #1d4ed8;
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
@@ -333,7 +336,6 @@ nav {
     border: none;
     cursor: pointer;
     opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -342,10 +344,6 @@ nav {
 
 .back-to-top.show {
     opacity: 1;
-}
-
-.back-to-top:hover {
-    transform: translateY(-4px);
 }
 
 .bt-progress {
@@ -383,26 +381,23 @@ footer p {
 
 .social-links {
     display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
+    gap: 0.6rem;
 }
 
 .social-link {
-    display: inline-block;
-    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 8px;
     color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.2s;
 }
 
 .social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 /* Responsive */
@@ -416,7 +411,6 @@ footer p {
         width: 100%;
         padding: 2rem;
         border-top: 1px solid var(--border);
-        transition: right 0.3s;
     }
 
     .nav-links.active {
@@ -451,11 +445,30 @@ footer p {
     }
 
     .contact-item {
-        flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.75rem;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
     }
 
     .current-datetime {
         font-size: 1rem;
     }
+
+    /* Add this to all your CSS files */
+html.dark-mode {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --border: rgba(255,255,255,0.1);
+    --text: #e2e8f0;
+}
+
+html.dark-mode,
+html.dark-mode body {
+    background: var(--bg);
+    color: var(--text);
+}
 }

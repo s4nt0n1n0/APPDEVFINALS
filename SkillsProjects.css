@@ -5,11 +5,11 @@
 }
 
 :root {
-    --primary: #2563eb;
+    --primary: #4023cd;
     --secondary: #1e293b;
-    --muted: #64748b;
+    --text: #1e293b;
     --bg: #ffffff;
-    --card-bg: #f8fafc;
+    --text: #1e293b;
     --border: #e2e8f0;
     --text: #1e293b;
     --success: #10b981;
@@ -34,7 +34,6 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-    transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -76,7 +75,6 @@ nav {
     padding: 0.5rem 0.75rem;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.2s;
 }
 
 .nav-links a:hover,
@@ -145,7 +143,6 @@ nav {
     border-radius: 16px;
     padding: 2.5rem 2rem;
     box-shadow: var(--shadow);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
@@ -160,11 +157,9 @@ nav {
     background: linear-gradient(90deg, var(--primary), #3b82f6);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary);
 }
@@ -178,17 +173,7 @@ nav {
     font-size: 3rem;
     margin-bottom: 1rem;
     display: inline-block;
-    animation: float 3s ease-in-out infinite;
 }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.skill-card:nth-child(1) .skill-icon { animation-delay: 0s; }
-.skill-card:nth-child(2) .skill-icon { animation-delay: 0.2s; }
-.skill-card:nth-child(3) .skill-icon { animation-delay: 0.4s; }
 
 .skill-card h3 {
     color: var(--primary);
@@ -212,12 +197,10 @@ nav {
     font-size: 0.9rem;
     font-weight: 600;
     border: 1px solid rgba(37, 99, 235, 0.2);
-    transition: all 0.2s ease;
     cursor: default;
 }
 
 .skill-tag:hover {
-    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.2));
 }
@@ -235,11 +218,9 @@ nav {
     overflow: hidden;
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
-    transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
 }
 
@@ -255,11 +236,6 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.05);
 }
 
 /* Project Content */
@@ -337,11 +313,9 @@ nav {
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.2s ease;
 }
 
 .project-link:hover {
-    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
@@ -362,7 +336,6 @@ nav {
     align-items: center;
     justify-content: center;
     z-index: 99;
-    transition: all 0.3s ease;
 }
 
 .back-to-top.show {
@@ -370,7 +343,6 @@ nav {
 }
 
 .back-to-top:hover {
-    transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
@@ -411,11 +383,9 @@ footer p {
     background: var(--card-bg);
     border: 1px solid var(--border);
     color: var(--primary);
-    transition: all 0.2s ease;
 }
 
 .social-link:hover {
-    transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
@@ -430,7 +400,6 @@ footer p {
         width: 100%;
         padding: 2rem;
         border-top: 1px solid var(--border);
-        transition: right 0.3s;
     }
 
     .nav-links.active {
@@ -470,4 +439,17 @@ footer p {
     .skill-card {
         padding: 2rem 1.5rem;
     }
+ /* Add this to all your CSS files */
+html.dark-mode {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --border: rgba(255,255,255,0.1);
+    --text: #e2e8f0;
+}
+
+html.dark-mode,
+html.dark-mode body {
+    background: var(--bg);
+    color: var(--text);
+}
 }

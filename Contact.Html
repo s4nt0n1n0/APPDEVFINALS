@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+     <script>
+    (function() {
+      try {
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch(e) {}
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Augorio Miguel</title>
     <meta name="description" content="Get in touch with Augorio Miguel">
@@ -9,10 +18,10 @@
 </head>
 <body>
 <nav>
-    <div class="logo">Portfolio</div>
+    <div class="logo"></div>
     <ul class="nav-links" id="navLinks">
         <li><a href="Home.html">Home</a></li>
-        <li><a href="About.html">About</a></li>
+        <li><a href="About.html">About me</a></li>
         <li><a href="SkillsProjects.html">Skills & Projects</a></li>
         <li><a href="Contact.html" class="active">Contact</a></li>
         <li><button class="theme-toggle" id="themeToggle">🌙</button></li>
@@ -28,10 +37,6 @@
     <div class="container">
         <h2>Get In Touch</h2>
         <p class="contact-intro">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-
-        <div class="current-datetime" id="currentDateTime">
-            Loading date and time...
-        </div>
 
         <div class="contact-content">
             <div class="contact-card">

@@ -5,7 +5,7 @@
 }
 
 :root {
-    --primary: #2563eb;
+    --primary: #4023cd;
     --accent: #3b82f6;
     --secondary: #1e293b;
     --muted: #64748b;
@@ -419,7 +419,19 @@ body.dark-mode .social-link {
         text-align: center;
     }
 }
+/* Add this to all your CSS files */
+html.dark-mode {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --border: rgba(255,255,255,0.1);
+    --text: #e2e8f0;
+}
 
+html.dark-mode,
+html.dark-mode body {
+    background: var(--bg);
+    color: var(--text);
+}
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     *,

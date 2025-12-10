@@ -5,11 +5,11 @@
 }
 
 :root {
-    --primary: #2563eb;
+    --primary: #4023cd;
     --secondary: #1e293b;
     --muted: #64748b;
     --bg: #ffffff;
-    --card-bg: #f8fafc;
+    --card-bg: #ffffff;
     --border: #e2e8f0;
     --text: #1e293b;
     --shadow: 0 4px 12px rgba(15,23,42,0.08);
@@ -459,4 +459,17 @@ footer a {
     .footer-content {
         flex-direction: column;
     }
+/* Add this to all your CSS files */
+html.dark-mode {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --border: rgba(255,255,255,0.1);
+    --text: #e2e8f0;
+}
+
+html.dark-mode,
+html.dark-mode body {
+    background: var(--bg);
+    color: var(--text);
+}
 }
