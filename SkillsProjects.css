@@ -9,20 +9,21 @@
     --secondary: #1e293b;
     --text: #1e293b;
     --bg: #ffffff;
-    --text: #1e293b;
+    --card-bg: #ffffff;
     --border: #e2e8f0;
-    --text: #1e293b;
+    --muted: #64748b;
     --success: #10b981;
     --warning: #f59e0b;
     --shadow: 0 4px 12px rgba(15,23,42,0.08);
     --shadow-hover: 0 12px 32px rgba(15,23,42,0.12);
 }
 
-body.dark-mode {
+html.dark-mode {
     --bg: #0f172a;
     --card-bg: #1e293b;
     --border: rgba(255,255,255,0.1);
     --text: #e2e8f0;
+    --muted: #94a3b8;
 }
 
 html {
@@ -145,6 +146,7 @@ nav {
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .skill-card::before {
@@ -157,6 +159,7 @@ nav {
     background: linear-gradient(90deg, var(--primary), #3b82f6);
     transform: scaleX(0);
     transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
 .skill-card:hover {
@@ -198,11 +201,44 @@ nav {
     font-weight: 600;
     border: 1px solid rgba(37, 99, 235, 0.2);
     cursor: default;
+    transition: all 0.3s ease;
 }
 
 .skill-tag:hover {
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.2));
+}
+
+/* Project Filters */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
 }
 
 /* Projects Grid */
@@ -218,10 +254,12 @@ nav {
     overflow: hidden;
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
+    transition: all 0.3s ease;
 }
 
 .project-card:hover {
     box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
 }
 
 /* Project Image */
@@ -272,6 +310,31 @@ nav {
     background: var(--warning);
 }
 
+/* Project Category Badge - FIXED */
+.project-category-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.project-category-badge.individual {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.project-category-badge.group {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
 .project-desc {
     color: var(--muted);
     margin-bottom: 1rem;
@@ -313,10 +376,12 @@ nav {
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 .project-link:hover {
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Back to Top */
@@ -336,6 +401,7 @@ nav {
     align-items: center;
     justify-content: center;
     z-index: 99;
+    transition: all 0.3s ease;
 }
 
 .back-to-top.show {
@@ -344,6 +410,7 @@ nav {
 
 .back-to-top:hover {
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -383,10 +450,12 @@ footer p {
     background: var(--card-bg);
     border: 1px solid var(--border);
     color: var(--primary);
+    transition: all 0.3s ease;
 }
 
 .social-link:hover {
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -400,6 +469,7 @@ footer p {
         width: 100%;
         padding: 2rem;
         border-top: 1px solid var(--border);
+        transition: right 0.3s ease;
     }
 
     .nav-links.active {
@@ -439,52 +509,13 @@ footer p {
     .skill-card {
         padding: 2rem 1.5rem;
     }
- /* Add this to all your CSS files */
-html.dark-mode {
-    --bg: #0f172a;
-    --card-bg: #1e293b;
-    --border: rgba(255,255,255,0.1);
-    --text: #e2e8f0;
-}
 
-/* Projects Grid */
-.project-filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-}
+    .project-filters {
+        gap: 0.5rem;
+    }
 
-.filter-btn {
-    padding: 0.75rem 1.5rem;
-    background: var(--card-bg);
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.filter-btn.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
-
-.projects-grid {
-
-html.dark-mode,
-html.dark-mode body {
-    background: var(--bg);
-    color: var(--text);
-}
-}
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
